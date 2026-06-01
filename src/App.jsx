@@ -24,6 +24,10 @@ function App() {
       : [];
   });
 
+   // It adds search state to the list of tasks
+  const [search, setSearch] =
+  useState("");
+
   // Add new task
   // Receives a task object from TaskInput.jsx
   const addTask = (newTask) => {
@@ -69,6 +73,13 @@ const editTask = (id, newText) => {
     )
   );
 };
+// It adds filter to the search tasks
+const filteredTasks = tasks.filter(
+  (task) =>
+    task.text
+      .toLowerCase()
+      .includes(search.toLowerCase())
+);
   // Save tasks to localStorage
   // Runs every time tasks changes
   useEffect(() => {
@@ -102,9 +113,24 @@ const editTask = (id, newText) => {
       {/* Input component */}
       <TaskInput onAddTask={addTask} />
 
+      <input
+  type="text"
+  placeholder="Search tasks..."
+  value={search}
+  onChange={(e) =>
+    setSearch(e.target.value)
+  }
+  style={{
+    width: "100%",
+    padding: "10px",
+    marginBottom: "20px",
+    marginTop: "10px",
+  }}
+/>
+
       {/* Task list component */}
       <TaskList
-        tasks={tasks}
+        tasks={filteredTasks}
         onDelete={deleteTask}
         onToggle={toggleTask}
         onEdit={editTask}

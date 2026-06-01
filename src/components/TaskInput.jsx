@@ -2,6 +2,9 @@ import { useState } from "react";
 
 function TaskInput({ onAddTask }) {
   const [text, setText] = useState("");
+  const [priority, setPriority] = useState("Medium");
+  const [dueDate, setDueDate] =
+  useState("");
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -12,10 +15,13 @@ function TaskInput({ onAddTask }) {
       id: Date.now(),
       text: text,
       completed: false,
+      priority: priority,
+      dueDate:dueDate,
     };
 
     onAddTask(newTask);
     setText("");
+    setDueDate("");
   };
 
   return (
@@ -27,6 +33,41 @@ function TaskInput({ onAddTask }) {
         onChange={(e) => setText(e.target.value)}
         style={{ padding: "8px", width: "70%" }}
       />
+      <select
+  value={priority}
+  onChange={(e) =>
+    setPriority(e.target.value)
+  }
+  style={{
+    padding: "8px",
+    marginLeft: "10px",
+  }}
+>
+  <option value="Low">
+    Low
+  </option>
+
+  <option value="Medium">
+    Medium
+  </option>
+
+  <option value="High">
+    High
+  </option>
+  
+</select>
+
+<input
+  type="date"
+  value={dueDate}
+  onChange={(e) =>
+    setDueDate(e.target.value)
+  }
+  style={{
+    padding: "8px",
+    marginLeft: "10px",
+  }}
+/>
 
       <button style={{ padding: "8px", marginLeft: "10px" }}>
         Add
@@ -34,5 +75,6 @@ function TaskInput({ onAddTask }) {
     </form>
   );
 }
+
 
 export default TaskInput;

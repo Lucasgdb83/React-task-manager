@@ -11,6 +11,13 @@ function TaskItem({ task, onDelete, onToggle, onEdit }) {
     setIsEditing(false);
   };
 
+ // Check if task is overdue
+ // Compare today's date with task due date
+  const isOverdue =
+    task.dueDate &&
+    new Date(task.dueDate) <
+      new Date().setHours(0, 0, 0, 0);
+
   return (
     <li
       style={{
@@ -30,17 +37,51 @@ function TaskItem({ task, onDelete, onToggle, onEdit }) {
           onChange={(e) => setEditedText(e.target.value)}
         />
       ) : (
-        <span
-          onClick={() => onToggle(task.id)}
-          style={{
-            cursor: "pointer",
-            textDecoration: task.completed
-              ? "line-through"
-              : "none",
-          }}
-        >
-          {task.text}
-        </span>
+      <div
+  onClick={() => onToggle(task.id)}
+  style={{
+    cursor: "pointer",
+    textDecoration: task.completed
+      ? "line-through"
+      : "none",
+  }}
+>
+  <strong
+    style={{
+      color:
+        task.priority === "High"
+          ? "red"
+          : task.priority === "Medium"
+          ? "orange"
+          : "green",
+    }}
+  >
+    [{task.priority}]
+  </strong>{" "}
+  {task.text}
+{/* Show due date if one exists */}
+{task.dueDate && (
+  <div
+    style={{
+      fontSize: "14px",
+
+      // If overdue = red
+      // Otherwise gray
+      color: isOverdue
+        ? "red"
+        : "gray",
+
+      marginTop: "5px",
+    }}
+  >
+
+    {/* Show warning if overdue */}
+    {isOverdue && "⚠ OVERDUE - "}
+
+    Due: {task.dueDate}
+  </div>
+)}
+</div>
       )}
 
       <div>
