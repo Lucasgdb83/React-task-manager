@@ -75,18 +75,33 @@ function TaskItem({
       style={{
         display: "flex",
         justifyContent: "space-between",
+        alignItems: "center",
 
         // Better mobile alignment
         alignItems: "flex-start",
-        marginBottom: "10px",
-        listStyle: "none",
-        border: "1px solid #ddd",
-        padding: "10px",
-        borderRadius: "8px",
 
-        // Allow wrapping
+        // Allow wrapping on small screens
         flexWrap: "wrap",
         gap: "10px",
+
+        // Card spacing
+        marginBottom: "16px",
+        listStyle: "none",
+        padding: "20px",
+
+        // Cleaner dark mode card
+        border: "1px solid #444",
+        borderRadius: "18px",
+
+        // Softer background
+        backgroundColor: "#1e1e1e",
+
+        // Subtle shadow
+        boxShadow:
+          "0 4px 12px rgba(0,0,0,0.2)",
+
+        // Smooth animation
+        transition: "0.2s ease",
       }}
     >
       {isEditing ? (
@@ -232,12 +247,36 @@ function TaskItem({
           {/* Show task category */}
           <div
             style={{
-              fontSize: "14px",
-              color: "steelblue",
-              marginTop: "5px",
+              display: "inline-block",
+              padding: "4px 10px",
+              borderRadius: "12px",
+
+              // Different color
+              // for each category
+              backgroundColor:
+                task.category === "Work"
+                  ? "#1e3a5f"
+                  : task.category === "Study"
+                    ? "#4b2c69"
+                    : task.category === "Gym"
+                      ? "#1b5e20"
+                      : "#5d4037",
+
+              color:
+                task.category === "Work"
+                  ? "#4da6ff"
+                  : task.category === "Study"
+                    ? "#bb86fc"
+                    : task.category === "Gym"
+                      ? "#66bb6a"
+                      : "#ffb74d",
+
+              fontSize: "13px",
+              fontWeight: "bold",
+              marginTop: "8px",
             }}
           >
-            Category: {task.category}
+            {task.category}
           </div>
 
         </div>
