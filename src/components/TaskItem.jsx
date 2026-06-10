@@ -1,5 +1,6 @@
 import { useState } from "react";
 
+
 function TaskItem({
   task,
   onDelete,
@@ -42,6 +43,11 @@ function TaskItem({
     setShowDeleteConfirm] =
     useState(false);
 
+  // Controls hover effect
+  const [isHovered,
+    setIsHovered] =
+    useState(false);
+
   // Save edited task
   const handleSave = () => {
 
@@ -70,8 +76,27 @@ function TaskItem({
     new Date(task.dueDate) <
     new Date().setHours(0, 0, 0, 0);
 
+  // Reusable button style
+  const buttonStyle = {
+    padding: "8px 14px",
+    borderRadius: "10px",
+    border: "1px solid #ccc",
+    cursor: "pointer",
+    fontSize: "13px",
+    minWidth: "70px",
+    transition: "0.2s ease",
+  };
+
   return (
     <li
+      onMouseEnter={() =>
+        setIsHovered(true)
+      }
+
+      onMouseLeave={() =>
+        setIsHovered(false)
+      }
+
       style={{
         display: "flex",
         justifyContent: "space-between",
@@ -94,11 +119,20 @@ function TaskItem({
         borderRadius: "18px",
 
         // Softer background
-        backgroundColor: "#1e1e1e",
+        backgroundColor:
+          task.completed
+            ? "#252525"
+            : "#1e1e1e",
 
         // Subtle shadow
-        boxShadow:
-          "0 4px 12px rgba(0,0,0,0.2)",
+        boxShadow: isHovered
+          ? "0 8px 20px rgba(0,0,0,0.35)"
+          : "0 4px 12px rgba(0,0,0,0.2)",
+
+        // Smooth animation
+        transform: isHovered
+          ? "translateY(-3px)"
+          : "translateY(0)",
 
         // Smooth animation
         transition: "0.2s ease",
@@ -200,12 +234,26 @@ function TaskItem({
       ) : (
 
         <div
-          onClick={() => onToggle(task.id)}
+          onClick={() =>
+            onToggle(task.id)
+          }
           style={{
             cursor: "pointer",
-            textDecoration: task.completed
-              ? "line-through"
-              : "none",
+
+            // Strike-through completed task
+            textDecoration:
+              task.completed
+                ? "line-through"
+                : "none",
+
+            // Fade completed task
+            opacity:
+              task.completed
+                ? 0.65
+                : 1,
+
+            transition:
+              "0.2s ease",
           }}
         >
           <strong
@@ -220,7 +268,10 @@ function TaskItem({
           >
             [{task.priority}]
           </strong>{" "}
+          {task.completed &&
+            "✔ "}
           {task.text}
+
           {/* Show due date if one exists */}
           {task.dueDate && (
             <div
@@ -288,12 +339,8 @@ function TaskItem({
         {isEditing ? (
           <button
             onClick={handleSave}
-            style={{
-              padding: "8px 14px",
-              borderRadius: "8px",
-              border: "none",
-              cursor: "pointer",
-            }}
+            style={buttonStyle}
+
           >
             Save
           </button>
@@ -304,14 +351,7 @@ function TaskItem({
             onClick={() =>
               setIsEditing(true)
             }
-            style={{
-              padding: "6px 14px",
-              borderRadius: "10px",
-              border: "none",
-              cursor: "pointer",
-              fontSize: "12px",
-              minWidth: "60px",
-            }}
+            style={buttonStyle}
           >
             Edit
           </button>
@@ -325,13 +365,8 @@ function TaskItem({
             setShowDeleteConfirm(true)
           }
           style={{
+            ...buttonStyle,
             marginLeft: "10px",
-            padding: "6px 14px",
-            borderRadius: "10px",
-            border: "none",
-            cursor: "pointer",
-            fontSize: "12px",
-            minWidth: "60px",
           }}
         >
           Delete
@@ -358,11 +393,8 @@ function TaskItem({
                 onDelete(task.id)
               }
               style={{
+                ...buttonStyle,
                 marginRight: "10px",
-                padding: "6px 12px",
-                borderRadius: "8px",
-                border: "none",
-                cursor: "pointer",
               }}
             >
               Yes
@@ -373,12 +405,7 @@ function TaskItem({
               onClick={() =>
                 setShowDeleteConfirm(false)
               }
-              style={{
-                padding: "6px 12px",
-                borderRadius: "8px",
-                border: "none",
-                cursor: "pointer",
-              }}
+              style={buttonStyle}
             >
               Cancel
             </button>
