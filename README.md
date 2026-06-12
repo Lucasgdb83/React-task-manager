@@ -1,16 +1,102 @@
-# React + Vite
+# Task Manager App
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A modern Task Manager web app built with React and Vite.
 
-Currently, two official plugins are available:
+This project allows users to:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- Add tasks
+- Edit tasks
+- Delete tasks
+- Mark tasks as completed
+- Set task priority
+- Add due dates
+- Categorize tasks
+- Search tasks
+- Filter completed and pending tasks
+- Track progress
+- Toggle dark/light mode
+- Save tasks automatically using Local Storage
 
-## React Compiler
+## Technologies Used
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- React
+- JavaScript
+- Vite
+- CSS (inline styling)
+- Local Storage API
 
-## Expanding the ESLint configuration
+## Screenshots
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+### Dark Mode
+
+<img width="1915" alt="Dark Mode" src="https://github.com/user-attachments/assets/bd055411-6d20-4dea-8c3d-3e9a96f32462" />
+
+### Light Mode
+
+<img width="1919" alt="Light Mode" src="https://github.com/user-attachments/assets/4c0af417-dfa6-4721-a0a3-ccd6f13e676d" />
+
+## Features
+
+- CRUD task management
+- Task priority system
+- Due dates
+- Task categories
+- Task search
+- Task filtering
+- Progress tracking
+- Dashboard statistics
+- Dark / Light mode
+- Persistent data storage
+- Responsive design
+
+## Installation
+
+Clone the repository:
+
+```bash
+git clone https://github.com/Lucasgdb83/React-task-manager.git
+```
+
+Go to the project folder:
+
+```bash
+cd React-task-manager
+```
+
+Install dependencies:
+
+```bash
+npm install
+```
+
+Run the development server:
+
+```bash
+npm run dev
+```
+
+## What I Learned
+
+This project helped me improve my understanding of:
+
+- React components
+- `useState` and `useEffect`
+- Props and component communication
+- CRUD functionality
+- State management
+- Conditional rendering
+- Sorting and filtering data
+- Local Storage persistence
+- Responsive UI design
+
+## Future Improvements
+
+- Backend integration
+- User authentication
+- Database storage
+- Drag and drop tasks
+- Task reminders
+
+## Author
+
+Built by **Lucas Galli** as part of my transition into Software Development and Software Engineering.
