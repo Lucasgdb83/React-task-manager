@@ -66,11 +66,11 @@ function TaskInput({ onAddTask }) {
             height: "20px",
           }}
         />
-        
+
       </div>
 
       {/* Second row */}
-      
+
       <div
         style={{
           display: "flex",
@@ -110,11 +110,13 @@ function TaskInput({ onAddTask }) {
 
           }
           style={{
-            padding: "6px",
+            padding: "6px 10px",
             borderRadius: "8px",
             border: "1px solid #ccc",
             fontSize: "14px",
-            minHeight: "10px",
+            height: "35px",
+            minWidth: "40px",
+            cursor: "pointer",
           }}
 
         >
@@ -147,7 +149,7 @@ function TaskInput({ onAddTask }) {
             borderRadius: "10px",
             border: "1px solid #ccc",
             fontSize: "14px",
-            height: "42px",
+            height: "35px",
             minWidth: "80px",
             cursor: "pointer",
           }}
@@ -167,11 +169,13 @@ function TaskInput({ onAddTask }) {
 
         <button
           style={{
-            padding: "10px",
-            borderRadius: "10px",
-            border: "2px solid #aab4b8ff",
+              padding: "6px 10px",
+            borderRadius: "8px",
+            border: "1px solid #ccc",
             fontSize: "14px",
-            minHeight: "10px",
+            height: "35px",
+            minWidth: "60px",
+            cursor: "pointer",
             fontWeight: "bold",
           }}
         >

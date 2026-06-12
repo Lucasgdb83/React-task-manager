@@ -28,6 +28,10 @@ function App() {
   const [search, setSearch] =
     useState("");
 
+  // Task filter state
+  const [filter, setFilter] =
+    useState("All");
+
   // Save dark mode preference
   const [darkMode, setDarkMode] =
     useState(() => {
@@ -111,11 +115,29 @@ function App() {
   // Filter tasks based on search
   const filteredTasks = tasks
 
-    .filter((task) =>
-      task.text
-        .toLowerCase()
-        .includes(search.toLowerCase())
-    )
+    .filter((task) => {
+
+      // Search filter
+      const matchesSearch =
+        task.text
+          .toLowerCase()
+          .includes(
+            search.toLowerCase()
+          );
+
+      // Status filter
+      const matchesFilter =
+        filter === "All"
+          ? true
+          : filter === "Pending"
+            ? !task.completed
+            : task.completed;
+
+      return (
+        matchesSearch &&
+        matchesFilter
+      );
+    })
 
     // Sort tasks
     .sort((a, b) => {
@@ -313,7 +335,7 @@ function App() {
 
       {/* Input component */}
       <TaskInput onAddTask={addTask} />
-      
+
       <input
         type="text"
         placeholder="Search tasks..."
@@ -418,6 +440,54 @@ function App() {
           completed
         </p>
 
+      </div>
+
+      {/* Task filters */}
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          gap: "10px",
+          marginBottom: "20px",
+          flexWrap: "wrap",
+        }}
+      >
+        {[
+          "All",
+          "Pending",
+          "Completed",
+        ].map((item) => (
+
+          <button
+            key={item}
+            onClick={() =>
+              setFilter(item)
+            }
+            style={{
+              padding: "8px 14px",
+              borderRadius: "10px",
+              border: "1px solid #ccc",
+              cursor: "pointer",
+
+              backgroundColor:
+                filter === item
+                  ? "#4a90e2"
+                  : "transparent",
+
+              color:
+                filter === item
+                  ? "white"
+                  : darkMode
+                    ? "white"
+                    : "black",
+
+              transition:
+                "0.2s ease",
+            }}
+          >
+            {item}
+          </button>
+        ))}
       </div>
 
       {/* Dashboard stats */}
