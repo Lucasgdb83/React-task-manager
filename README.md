@@ -1,6 +1,8 @@
 # Task Manager App
 
-A modern Task Manager web app built with React and Vite.
+A responsive Task Manager application built with React and JavaScript.
+
+This project includes task creation, editing, filtering, categories, due dates, dark/light mode, progress tracking, and persistent local storage.
 
 This project allows users to:
 
@@ -17,7 +19,7 @@ This project allows users to:
 - Toggle dark/light mode
 - Save tasks automatically using Local Storage
 
-## Technologies Used
+## ## Tech Stack
 
 - React
 - JavaScript
@@ -99,4 +101,8 @@ This project helped me improve my understanding of:
 
 ## Author
 
-Built by **Lucas Galli** as part of my transition into Software Development and Software Engineering.
+## Author
+
+Built by Lucas Galli as part of my transition into Software Development and Software Engineering.
+
+This project was created to strengthen my React fundamentals, state management skills, and front-end development portfolio.
