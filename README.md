@@ -19,6 +19,10 @@ This project allows users to:
 - Toggle dark/light mode
 - Save tasks automatically using Local Storage
 
+## Live Demo
+
+https://react-task-manager-xi-three.vercel.app
+
 ## ## Tech Stack
 
 - React
@@ -88,7 +92,7 @@ This project helped me improve my understanding of:
 - State management
 - Conditional rendering
 - Sorting and filtering data
-- Local Storage persistence
+- Local Storage API
 - Responsive UI design
 
 ## Future Improvements
