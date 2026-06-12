@@ -6,6 +6,7 @@ function TaskItem({
   onDelete,
   onToggle,
   onEdit,
+  darkMode,
 }) {
 
   // Controls edit mode
@@ -114,15 +115,21 @@ function TaskItem({
         listStyle: "none",
         padding: "20px",
 
-        // Cleaner dark mode card
-        border: "1px solid #444",
+        // Dynamic border
+        border: darkMode
+          ? "1px solid #444"
+          : "1px solid #ddd",
+
         borderRadius: "18px",
 
-        // Softer background
-        backgroundColor:
-          task.completed
+        // Dynamic card color
+        backgroundColor: darkMode
+          ? task.completed
             ? "#252525"
-            : "#1e1e1e",
+            : "#1e1e1e"
+          : task.completed
+            ? "#f0f0f0"
+            : "white",
 
         // Subtle shadow
         boxShadow: isHovered
@@ -239,6 +246,11 @@ function TaskItem({
           }
           style={{
             cursor: "pointer",
+
+            // Text color changes with mode
+            color: darkMode
+              ? "white"
+              : "black",
 
             // Strike-through completed task
             textDecoration:

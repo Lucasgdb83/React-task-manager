@@ -689,6 +689,7 @@ function App() {
           onDelete={deleteTask}
           onToggle={toggleTask}
           onEdit={editTask}
+          darkMode={darkMode}
         />
       )}
     </div>

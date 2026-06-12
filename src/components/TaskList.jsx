@@ -1,7 +1,7 @@
 
 import TaskItem from "./TaskItem";
 
-function TaskList({ tasks, onDelete, onToggle, onEdit }) {
+function TaskList({ tasks, onDelete, onToggle, onEdit, darkMode }) {
   return (
     <div>
       {tasks.length === 0 ? (
@@ -15,6 +15,7 @@ function TaskList({ tasks, onDelete, onToggle, onEdit }) {
               onDelete={onDelete}
               onToggle={onToggle}
               onEdit={onEdit}
+              darkMode={darkMode}
             />
           ))}
         </ul>
